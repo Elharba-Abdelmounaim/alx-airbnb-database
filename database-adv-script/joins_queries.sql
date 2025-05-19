@@ -23,6 +23,8 @@ FROM
     properties
 LEFT JOIN
     reviews ON properties.id = reviews.property_id;
+ORDER BY
+    properties.id;
 
 
 -- 3. FULL OUTER JOIN to get all users and all bookings (linked or not)
