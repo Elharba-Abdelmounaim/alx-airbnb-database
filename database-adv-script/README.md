@@ -1,22 +1,18 @@
-## 📁 Project: ALX Airbnb Database — Advanced Joins
+# ALX Airbnb Database — Advanced Joins
 
-### 📌 Task: Complex Queries with Joins
+## Task 0: Write Complex Queries with Joins
 
-This task demonstrates the use of different types of SQL JOINs to extract and relate data from multiple tables in the simulated Airbnb database.
-
----
-
-### ✅ Objective
-- Practice advanced SQL JOIN operations.  
-- Retrieve meaningful insights from multiple related tables.  
+### Objective
+- Practice advanced SQL JOIN operations.
+- Retrieve meaningful insights from multiple related tables.
 - Understand the difference between INNER JOIN, LEFT JOIN, and FULL OUTER JOIN.
 
 ---
 
-### 🛠️ Queries Implemented
+### Queries Implemented
 
-#### 1. `INNER JOIN` — Bookings and Users  
-**Query Goal**: Retrieve all bookings along with the users who made them.
+#### 1. INNER JOIN — Bookings and Users
+Retrieve all bookings along with the users who made them.
 
 ```sql
 SELECT 
