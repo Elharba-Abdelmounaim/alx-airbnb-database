@@ -2,35 +2,58 @@
 
 ## Overview
 
-This directory contains advanced SQL scripts for the Airbnb database project, focusing on mastering different types of SQL JOINs to retrieve combined data from multiple tables.
-
-## Queries Implemented
-
-### 1. INNER JOIN - Bookings with Users
-
-This query retrieves all bookings along with the users who made those bookings. Only bookings linked to a user are returned.
-
-### 2. LEFT JOIN - Properties with Reviews
-
-This query retrieves all properties and their associated reviews. Properties without any reviews are also included, with NULL values for the review fields.
-
-### 3. FULL OUTER JOIN - Users and Bookings
-
-This query retrieves all users and all bookings. It includes users without bookings and bookings not linked to any user.
-
-## How to Use
-
-- Run these queries on the Airbnb database to gain insights about bookings, users, properties, and reviews.
-- Useful for analyzing booking patterns, user activity, and property feedback.
-
-## Learning Outcome
-
-Through these queries, learners will deepen their understanding of:
-
-- How to combine data from multiple tables using different join strategies.
-- The impact of each type of join on the resulting dataset.
-- Practical usage of INNER JOIN, LEFT JOIN, and FULL OUTER JOIN in real-world database scenarios.
+This project is part of the ALX Airbnb Database module and focuses on mastering advanced SQL techniques, including different types of JOINs and Subqueries. These skills are essential for retrieving and analyzing complex data relationships in a simulated Airbnb database.
 
 ---
 
-*This README is part of the ALX Database Advanced SQL project.*
+## Part 1: Advanced SQL Joins
+
+### Queries Implemented
+
+1. **INNER JOIN - Bookings with Users**  
+   Retrieves all bookings along with the users who made those bookings. Only bookings linked to a user are returned.
+
+2. **LEFT JOIN - Properties with Reviews**  
+   Retrieves all properties and their associated reviews. Properties without any reviews are included as well, with NULL values in the review fields.
+
+3. **FULL OUTER JOIN - Users and Bookings**  
+   Retrieves all users and all bookings. This includes users without bookings and bookings not linked to any user.
+
+### Learning Outcomes
+
+- Understand how to combine data from multiple tables using INNER JOIN, LEFT JOIN, and FULL OUTER JOIN.
+- Learn the differences and use cases for each type of join.
+- Apply joins in real-world database scenarios for meaningful data retrieval.
+
+---
+
+## Part 2: Practice Subqueries
+
+### Tasks
+
+1. **Find Properties with Average Rating Greater Than 4.0**  
+   Write a non-correlated subquery to calculate the average rating for each property and retrieve those with an average rating above 4.0.
+
+2. **Find Users with More Than 3 Bookings**  
+   Write a correlated subquery to count the number of bookings per user and retrieve users who have made more than 3 bookings.
+
+### Example Queries
+
+```sql
+-- Find properties with average rating > 4.0
+SELECT p.id, p.name
+FROM properties p
+WHERE (
+  SELECT AVG(r.rating)
+  FROM reviews r
+  WHERE r.property_id = p.id
+) > 4.0;
+
+-- Find users with more than 3 bookings
+SELECT u.id, u.name, u.email
+FROM users u
+WHERE (
+  SELECT COUNT(*)
+  FROM bookings b
+  WHERE b.user_id = u.id
+) > 3;
