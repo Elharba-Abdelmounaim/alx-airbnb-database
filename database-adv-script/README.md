@@ -2,58 +2,69 @@
 
 ## Overview
 
-This project is part of the ALX Airbnb Database module and focuses on mastering advanced SQL techniques, including different types of JOINs and Subqueries. These skills are essential for retrieving and analyzing complex data relationships in a simulated Airbnb database.
+This project covers advanced SQL querying and optimization techniques applied on a simulated Airbnb database. The goal is to gain practical skills in writing complex SQL queries, optimizing performance, and designing efficient database schemas suitable for large-scale applications.
 
 ---
 
-## Part 1: Advanced SQL Joins
+## Task 0: Complex Queries with Joins
 
-### Queries Implemented
+### Description:
+Master SQL JOINs by combining data from multiple tables to retrieve meaningful insights.
 
-1. **INNER JOIN - Bookings with Users**  
-   Retrieves all bookings along with the users who made those bookings. Only bookings linked to a user are returned.
-
-2. **LEFT JOIN - Properties with Reviews**  
-   Retrieves all properties and their associated reviews. Properties without any reviews are included as well, with NULL values in the review fields.
-
-3. **FULL OUTER JOIN - Users and Bookings**  
-   Retrieves all users and all bookings. This includes users without bookings and bookings not linked to any user.
-
-### Learning Outcomes
-
-- Understand how to combine data from multiple tables using INNER JOIN, LEFT JOIN, and FULL OUTER JOIN.
-- Learn the differences and use cases for each type of join.
-- Apply joins in real-world database scenarios for meaningful data retrieval.
+### Queries Implemented:
+- **INNER JOIN**: Retrieve all bookings and the users who made those bookings.
+- **LEFT JOIN**: Retrieve all properties and their reviews, including properties without any reviews.
+- **FULL OUTER JOIN**: Retrieve all users and all bookings, including users without bookings and bookings not linked to any user.
 
 ---
 
-## Part 2: Practice Subqueries
+## Task 1: Practice Subqueries
 
-### Tasks
+### Description:
+Use correlated and non-correlated subqueries for advanced data filtering and analysis.
 
-1. **Find Properties with Average Rating Greater Than 4.0**  
-   Write a non-correlated subquery to calculate the average rating for each property and retrieve those with an average rating above 4.0.
+### Queries Implemented:
+- Find all properties where the average rating is greater than 4.0 using a subquery.
+- Find users who have made more than 3 bookings using a correlated subquery.
 
-2. **Find Users with More Than 3 Bookings**  
-   Write a correlated subquery to count the number of bookings per user and retrieve users who have made more than 3 bookings.
+---
 
-### Example Queries
+## Task 2: Apply Aggregations and Window Functions
 
-```sql
--- Find properties with average rating > 4.0
-SELECT p.id, p.name
-FROM properties p
-WHERE (
-  SELECT AVG(r.rating)
-  FROM reviews r
-  WHERE r.property_id = p.id
-) > 4.0;
+### Description:
+Analyze data using aggregation functions and window functions for ranking.
 
--- Find users with more than 3 bookings
-SELECT u.id, u.name, u.email
-FROM users u
-WHERE (
-  SELECT COUNT(*)
-  FROM bookings b
-  WHERE b.user_id = u.id
-) > 3;
+### Queries Implemented:
+- Count the total number of bookings made by each user (`COUNT` with `GROUP BY`).
+- Rank properties based on the total number of bookings they have received using `RANK()` window function.
+
+---
+
+## How to Use
+
+- Run each SQL script on the Airbnb database.
+- Analyze results to understand user behavior, property performance, and booking trends.
+- Experiment by modifying queries to deepen your understanding of SQL capabilities.
+
+---
+
+## Learning Outcomes
+
+- Write complex JOIN queries to combine and retrieve related data.
+- Utilize subqueries to perform advanced filtering and calculations.
+- Apply aggregation functions to summarize data effectively.
+- Use window functions to rank and analyze data partitions.
+- Think critically about query optimization and performance tuning.
+
+---
+
+## Files
+
+- `joins_queries.sql` — Contains JOIN queries.
+- `subqueries.sql` — Contains subquery examples.
+- `aggregations_and_window_functions.sql` — Contains aggregation and window function queries.
+- `README.md` — This documentation.
+
+---
+
+*This README is part of the ALX Airbnb Database Advanced SQL project.*
